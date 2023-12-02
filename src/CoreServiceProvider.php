@@ -10,4 +10,8 @@ class CoreServiceProvider extends ServiceProvider
     {
         //
     }
+
+    public static function getUserModel() : string {
+        return config('auth.providers.users.model');
+    }
 }

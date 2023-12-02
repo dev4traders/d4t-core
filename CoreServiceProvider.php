@@ -1,6 +1,6 @@
 <?php
 
-namespace D4T\Core\Providers;
+namespace D4T\Core;
 
 use Illuminate\Support\ServiceProvider;
 

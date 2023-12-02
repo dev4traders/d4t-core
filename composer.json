@@ -1,0 +1,30 @@
+{
+    "name": "dev4traders/d4t-core",
+    "description": "d4t core",
+    "type": "library",
+    "keywords": ["d4t", "core"],
+    "homepage": "https://github.com/dev4traders/d4t-core",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mikha-dev",
+            "email": "mikha.dev@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^10"
+    },
+    "autoload": {
+        "psr-4": {
+            "D4T\\Core\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "D4T\\Core\\CoreServiceProvider"
+            ]
+        }
+    }
+}

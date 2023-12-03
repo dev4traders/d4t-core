@@ -1,8 +1,7 @@
 <?php
 
-namespace D4t\Core\Traits;
+namespace D4T\Core\Traits;
 
-use Closure;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 

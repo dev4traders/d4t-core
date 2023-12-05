@@ -2,6 +2,7 @@
 
 namespace D4T\Core\Models;
 
+use D4T\Core\CoreServiceProvider;
 use Dcat\Admin\Enums\HttpSchemaType;
 use D4T\Core\Traits\HasDateTimeFormatter;
 use Illuminate\Database\Eloquent\Model;
@@ -30,7 +31,7 @@ class Domain extends Model
 
     public function manager() : BelongsTo
     {
-        $userModel = config('auth.providers.users.model');
+        $userModel = CoreServiceProvider::getUserModel();
         return $this->belongsTo($userModel, 'manager_id');
     }
 
@@ -40,7 +41,7 @@ class Domain extends Model
         else
            $host = Str::of(config('app.url'))->remove('http://')->remove('https://');
 
-        $domain = self::whereHost($host)->first();
+        $domain = self::where('host', 'like', "%$host%")->first();
 
         if(!$domain)
             throw new \Exception('Domain not setup. Requiested host: '.$host );

@@ -4,10 +4,14 @@ namespace D4T\Core\Traits;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use D4T\Core\Repositories\LabelWithCount;
 
 trait HasCountedEnum
 {
 
+    /**
+     * @return \Illuminate\Support\Collection<D4TEnum, \D4T\Core\Repositories\LabelWithCount>
+     */
     public static function enumCounts(string $fieldName, string $enumClass, ?\Closure $queryCallback = null) : Collection {
         $query = self::select($fieldName, DB::raw('COUNT(*) as count'))
             ->whereIn($fieldName, $enumClass::values())
@@ -22,7 +26,7 @@ trait HasCountedEnum
         $data = new Collection();
         foreach($items as $enum => $count) {
             $label = $enumClass::from($enum)->label();
-            $data[$enum] = $label.' ('.$count.')';
+            $data[$enum] = new LabelWithCount($label, $count);
         }
 
         return $data;

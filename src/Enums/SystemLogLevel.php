@@ -2,9 +2,10 @@
 
 namespace D4T\Core\Enums;
 
+use D4T\UI\Enums\StyleClassType;
 use D4T\Core\Traits\D4TEnumTrait;
-use D4T\Core\Contracts\D4TEnumColored;
-use Dcat\Admin\Enums\StyleClassType;
+use D4T\UI\Contracts\D4TEnumColored;
+
 
 enum SystemLogLevel: int implements D4TEnumColored
 {

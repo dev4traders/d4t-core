@@ -12,10 +12,6 @@ trait HasDomain
         return $query->where('domain_id', $domainId);
     }
 
-    public function scopeOwnDomainOnly(Builder $query, int $domainId): Builder {
-        return $query->where('domain_id', $domainId);
-    }
-
     public function domain() : BelongsTo
     {
         //todo::move to d4t-core config

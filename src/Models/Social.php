@@ -1,0 +1,17 @@
+<?php
+
+namespace D4T\Core\Models;
+
+use D4T\Core\CoreServiceProvider;
+use Illuminate\Database\Eloquent\Model;
+
+class Social extends Model
+{
+    protected $table = 'user_social_logins';
+
+    public function user()
+    {
+        $model = CoreServiceProvider::getUserModel();
+        return $this->belongsTo($model);
+    }
+}

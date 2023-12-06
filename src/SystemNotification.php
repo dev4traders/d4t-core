@@ -4,14 +4,13 @@ namespace D4T\Core;
 
 use D4T\Core\DomainMailer;
 use Illuminate\Bus\Queueable;
+use D4T\UI\Enums\StyleClassType;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use D4T\Core\Traits\DispatchesToSubscribers;
 use D4T\Core\Models\SystemNotificationSetting;
 use D4T\Core\Contracts\SubscribableNotificationInterface;
 use D4T\Core\Contracts\DomainNotificationWithContextInterface;
-use D4T\UI\Enums\StyleClassType;
-use Dcat\Admin\DcatIcon;
 
 abstract class SystemNotification extends Notification implements ShouldQueue, SubscribableNotificationInterface, DomainNotificationWithContextInterface
 {
@@ -20,24 +19,11 @@ abstract class SystemNotification extends Notification implements ShouldQueue, S
 
     public int $domainId;
 
-    public static function getStyle() : StyleClassType {
-        return StyleClassType::PRIMARY;
-    }
-
-    public static function getIcon() : string {
-        return DcatIcon::USER();
-    }
-
     protected string $viaBase = ''; // todo::move to child NotificationSubscribersNotifier::class;
 
     public function getDomainId() : int {
         return $this->domainId;
     }
-
-    //todo::use label
-    // public function getTitle() : string {
-    //     return SystemNotificationSetting::getTitle(get_class($this));
-    // }
 
     public function __construct(int $domainId)
     {
@@ -65,6 +51,14 @@ abstract class SystemNotification extends Notification implements ShouldQueue, S
         }
 
         return array_unique(array_merge($this->getVia($notifiable), $via));
+    }
+
+    public static function getStyle() : StyleClassType {
+        return StyleClassType::PRIMARY;
+    }
+
+    public static function getIcon() : string {
+        return 'fas fa-user-circle';
     }
 
     public static function labelFor(string $type): string

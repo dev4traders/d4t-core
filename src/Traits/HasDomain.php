@@ -2,6 +2,7 @@
 
 namespace D4T\Core\Traits;
 
+use D4T\Core\Models\Domain;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -14,9 +15,7 @@ trait HasDomain
 
     public function domain() : BelongsTo
     {
-        //todo::move to d4t-core config
-        $domainsModel = config('admin.database.domains_model');
-        return $this->belongsTo($domainsModel, 'domain_id');
+        return $this->belongsTo(Domain::class, 'domain_id');
     }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace D4T\Core;
+namespace D4T\Core\Repositories;
 
 use Spatie\LaravelData\Data;
 

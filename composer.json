@@ -14,7 +14,7 @@
     "repositories": [
         {
             "type": "git",
-            "url": "https://github.com/dev4traders/laravel-authentication-log.git"
+            "url": "https://github.com/mikha-dev/laravel-authentication-log.git"
         }
     ],    
     "require": {
@@ -23,7 +23,7 @@
         "owen-it/laravel-auditing": "^13.0",
         "spatie/laravel-data": "^3.10",
         "spatie/laravel-database-mail-templates": "^3.5.1",
-        "dev4traders/laravel-authentication-log": "dev-main"
+        "mikha-dev/laravel-authentication-log": "dev-main"
     },
     "autoload": {
         "psr-4": {

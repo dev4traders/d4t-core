@@ -4,7 +4,7 @@ namespace D4T\Core;
 
 use Illuminate\Contracts\Mail\Mailable;
 use D4T\Core\Contracts\MailDepartmentInterface;
-use Dcat\Admin\Contracts\DomainMailTemplateInterface;
+use D4T\Core\Contracts\DomainMailTemplateInterface;
 
 class MailTemplateFake implements DomainMailTemplateInterface
 {

@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use D4T\Core\Traits\HasDomain;
 use D4T\Core\Traits\HasCountedEnum;
+use D4T\Core\Models\EmailDepartment;
 use D4T\Core\Enums\EmailDirectionType;
 use Illuminate\Database\Eloquent\Model;
 use D4T\Core\Traits\HasDateTimeFormatter;
@@ -58,8 +59,7 @@ class DomainEmail extends Model
     }
 
     public function department() : BelongsTo {
-        $departmentModel = config('admin.database.email_departments_model');
-        return $this->belongsTo($departmentModel, 'department_id');
+        return $this->belongsTo(EmailDepartment::class, 'department_id');
     }
 
     public function getShortBodyAttribute() {

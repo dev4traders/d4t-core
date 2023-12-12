@@ -17,11 +17,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class DomainMailTemplate extends MailTemplate implements DomainMailTemplateInterface {
 
-    //use Cachable; // todo:: move to child class
     use HasDateTimeFormatter;
     use HasDomain;
 
-    const TABLE_NAME = 'mail_templates';
+    const TABLE_NAME = 'domain_mail_templates';
 
     protected $appends = ['label'];
 
@@ -88,7 +87,7 @@ class DomainMailTemplate extends MailTemplate implements DomainMailTemplateInter
 
     public static function labelFor(string $value): string
     {
-        static::ensureImplementsInterface();
+        //static::ensureImplementsInterface();
         $lang_key = 'email-templates.'.$value;
 
         return app('translator')->has($lang_key) ? __($lang_key) : $value;
@@ -96,7 +95,7 @@ class DomainMailTemplate extends MailTemplate implements DomainMailTemplateInter
 
     public function label(): string
     {
-        return static::labelFor(static::class);
+        return static::labelFor($this->mailable);
     }
 
     public function getLabelAttribute() : string {

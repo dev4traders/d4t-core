@@ -4,7 +4,7 @@ namespace D4T\Core;
 
 use D4T\Core\DomainMailer;
 use Illuminate\Bus\Queueable;
-use D4T\UI\Enums\StyleClassType;
+use D4T\Core\Enums\StyleClassType;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use D4T\Core\Traits\DispatchesToSubscribers;

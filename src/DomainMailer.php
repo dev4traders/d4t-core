@@ -34,7 +34,7 @@ class DomainMailer {
                     $mailable->setLayout($dep->getMainTemplate());
 
                 /** @var Mailer $mailer */
-                $mailer = app()->makeWith('custom.mailer', $setting->toArray());
+                $mailer = CoreServiceProvider::getMailer($setting);
 
                 $mailer->alwaysFrom($dep->getAddress(), $dep->getFromName());
                 $mailer->alwaysReplyTo($dep->getAddress(), $dep->getFromName());

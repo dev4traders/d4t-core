@@ -2,21 +2,31 @@
 
 namespace D4T\Core\Models;
 
+use Illuminate\Support\Str;
 use D4T\Core\CoreServiceProvider;
 use Dcat\Admin\Enums\HttpSchemaType;
-use D4T\Core\Traits\HasDateTimeFormatter;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use D4T\Core\Traits\HasDateTimeFormatter;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Domain extends Model
 {
     use HasDateTimeFormatter;
 
-    protected $casts = [
-        'schema' => HttpSchemaType::class
-    ];
+    protected string $app;
+
+    public function setApp(string $app) : Domain {
+        $this->app = $app;
+
+        return $this;
+    }
+
+    public function getApp() : string {
+        return $this->app;
+    }
 
     protected $fillable = ['host','manager_id'];
 
@@ -35,18 +45,24 @@ class Domain extends Model
         return $this->belongsTo($userModel, 'manager_id');
     }
 
+    public function hosts() : HasMany {
+        return $this->hasMany(DomainHost::class);
+    }
+
     public static function fromRequest() : Domain {
         if(request())
-            $host = request()->getHost();
+            $hostName = request()->getHost();
         else
-           $host = Str::of(config('app.url'))->remove('http://')->remove('https://');
+           $hostName = Str::of(config('app.url'))->remove('http://')->remove('https://');
 
-        $domain = self::where('host', 'like', "%{$host}%")->first();
+        $host = DomainHost::with('domain')->where('host', $hostName)->first();
 
-        if(!$domain)
-            throw new \Exception('Domain not setup. Requiested host: '.$host );
+        if(!$host)
+            throw new \Exception('Host not setup. Requiested host: '.$hostName );
 
-        return $domain;
+        $host->domain->setApp($host->app);
+
+        return $host->domain;
     }
 
     public function getFullUrlAttribute()

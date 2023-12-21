@@ -11,12 +11,12 @@ trait HasProfile
 {
     public function social(): HasMany
     {
-        return $this->hasMany(Social::class);
+        return $this->hasMany(Social::class, 'user_id');
     }
 
     public function profile(): HasOne
     {
-        return $this->hasOne(Profile::class);
+        return $this->hasOne(Profile::class, 'user_id');
     }
 
 }

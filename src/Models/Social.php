@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Social extends Model
 {
-    protected $table = 'user_social_logins';
+    protected $table = 'social_logins';
 
     public function user()
     {
         $model = CoreServiceProvider::getUserModel();
-        return $this->belongsTo($model);
+        return $this->belongsTo($model, 'user_id');
     }
 }

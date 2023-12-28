@@ -4,10 +4,8 @@ namespace D4T\Core\Models;
 
 use Illuminate\Support\Str;
 use D4T\Core\CoreServiceProvider;
-use Dcat\Admin\Enums\HttpSchemaType;
 use Illuminate\Database\Eloquent\Model;
 use D4T\Core\Traits\HasDateTimeFormatter;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -28,7 +26,7 @@ class Domain extends Model
         return $this->app;
     }
 
-    protected $fillable = ['host','manager_id'];
+    protected $fillable = ['host_base','manager_id'];
 
     public function default_roles(): BelongsToMany
     {
@@ -46,7 +44,7 @@ class Domain extends Model
     }
 
     public function hosts() : HasMany {
-        return $this->hasMany(DomainHost::class);
+        return $this->hasMany(DomainHost::class, 'domain_id');
     }
 
     public static function fromRequest() : Domain {

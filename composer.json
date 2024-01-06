@@ -30,7 +30,8 @@
         "spatie/laravel-data": "^3.10",
         "spatie/laravel-database-mail-templates": "^3.5.1",
         "mikha-dev/laravel-authentication-log": "dev-main",
-        "torann/geoip": "^3.0.4"
+        "torann/geoip": "^3.0.4",
+        "jenssegers/agent": "^2.6"
     },
     "config": {
         "minimum-stability": "dev"

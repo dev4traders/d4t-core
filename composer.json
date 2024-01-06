@@ -29,7 +29,8 @@
         "owen-it/laravel-auditing": "dev-master",
         "spatie/laravel-data": "^3.10",
         "spatie/laravel-database-mail-templates": "^3.5.1",
-        "mikha-dev/laravel-authentication-log": "dev-main"
+        "mikha-dev/laravel-authentication-log": "dev-main",
+        "torann/geoip": "^3.0.4"
     },
     "config": {
         "minimum-stability": "dev"

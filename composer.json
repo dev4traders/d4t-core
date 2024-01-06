@@ -14,13 +14,19 @@
     "repositories": [
         {
             "type": "git",
-            "url": "https://github.com/mikha-dev/laravel-authentication-log.git"
+            "url": "https://github.com/mikha-dev/laravel-authentication-log.git",
+            "canonical": false
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/mikha-dev/laravel-auditing.git",
+            "canonical": false
         }
     ],    
     "require": {
         "php": "^8.1",
         "illuminate/support": "^10",
-        "owen-it/laravel-auditing": "^13.0",
+        "owen-it/laravel-auditing": "dev-master",
         "spatie/laravel-data": "^3.10",
         "spatie/laravel-database-mail-templates": "^3.5.1",
         "mikha-dev/laravel-authentication-log": "dev-main"

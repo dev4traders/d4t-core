@@ -31,6 +31,9 @@
         "spatie/laravel-database-mail-templates": "^3.5.1",
         "mikha-dev/laravel-authentication-log": "dev-main"
     },
+    "config": {
+        "minimum-stability": "dev"
+    },    
     "autoload": {
         "psr-4": {
             "D4T\\Core\\": "src/"

@@ -10,6 +10,7 @@ enum StyleClassType : string implements D4TEnum
 {
     use D4TEnumTrait;
 
+    case LIGHT = 'light';
     case DARK = 'dark';
     case WARNING = 'warning';
     case INFO = 'info';

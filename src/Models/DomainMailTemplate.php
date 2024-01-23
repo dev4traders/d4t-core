@@ -54,18 +54,19 @@ class DomainMailTemplate extends MailTemplate implements DomainMailTemplateInter
     }
 
     public static function fillTypesForDomains() : void {
-        $types = config('d4t.email_template_types');
+        $types = config('funded.email_template_types');
         $domains = Domain::all();
 
         collect($types)->each(function ($type) use($domains) {
             $domains->each( function($domain) use($type) {
 
                 $subject = self::labelFor($type);
-                $parts = preg_split('/(?=[A-Z])/', $subject, -1, PREG_SPLIT_NO_EMPTY);
-                $subject = Arr::join($parts, ' ');
+                $name = Str::remove('Mail', class_basename($type), );
+                $parts = preg_split('/(?=[A-Z])/', $name, -1, PREG_SPLIT_NO_EMPTY);
 
                 $fileName = Arr::join($parts, '_');
                 $fileName = Str::of($fileName)->lower();
+
                 $path = config('view.paths')[0];
                 $fileName = $path.'/emails/'.$fileName.'.blade.php';
 

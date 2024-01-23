@@ -4,7 +4,6 @@
 namespace D4T\Core\Notifications;
 
 use D4T\Core\DomainMailer;
-use Dcat\Admin\Models\Domain;
 use Illuminate\Bus\Queueable;
 use D4T\Core\SystemNotification;
 use D4T\Core\Mails\UserCreatedMail;
@@ -51,15 +50,12 @@ class UserCreatedNotification extends SystemNotification
 
     public function toDomainMailer($notifiable): DomainTemplateMailable
     {
-        $domain = Domain::find($notifiable->domain_id);
-
         return (
             new UserCreatedMail(
                 $notifiable->username,
                 $notifiable->email,
                 $notifiable->name,
                 $this->openPassword,
-                $domain->getFullUrlAttribute(),
                 $this
             )
         );

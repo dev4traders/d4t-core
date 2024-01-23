@@ -41,8 +41,9 @@ class DomainMailer {
 
                 $mailer->to($to)->send($mailable);
         } else {
-            Log::warning('DomainMailSetting not found, using default mailer');
-            Mail::to($to)->send($mailable);
+            Log::critical('DomainMailSetting not found, using default mailer', ['to' => $to]);
+            Mail::mailer('log')->to($to)->send($mailable);
+            //Mail::to($to)->send($mailable);
         }
     }
 

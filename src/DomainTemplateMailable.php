@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use D4T\Core\MailTemplateFake;
 use D4T\Core\Models\DomainEmail;
 use Illuminate\Queue\SerializesModels;
+use D4T\Core\Models\DomainMailTemplate;
 use Spatie\MailTemplates\TemplateMailable;
 use D4T\Core\Contracts\MailDepartmentInterface;
 use D4T\Core\Contracts\DomainMailTemplateInterface;

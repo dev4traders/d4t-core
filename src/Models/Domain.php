@@ -65,7 +65,8 @@ class Domain extends Model
 
     public function getFullUrlAttribute()
     {
-        return $this->schema->value.'://'.$this->host;
+        return $this->host;
+        //return $this->schema->value.'http://'.$this->host;
     }
 
 }

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use D4T\Core\Enums\HelpdeskTicketStatus;
 use D4T\Core\Traits\HasDateTimeFormatter;
 use D4T\Core\Enums\HelpdeskTicketPriority;
+use D4T\Core\Traits\HasDomain;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -31,6 +32,7 @@ class HelpdeskTicket extends Model
     use HasDateTimeFormatter;
     use SoftDeletes;
     use HasCountedEnum;
+    use HasDomain;
 
     protected $table = 'helpdesk_tickets';
 
@@ -59,11 +61,6 @@ class HelpdeskTicket extends Model
     public function comments()
     {
         return $this->hasMany(HelpdeskTicketComment::class, 'ticket_id');
-    }
-
-    public function domain()
-    {
-        return $this->belongsTo(Domain::class, 'domain_id');
     }
 
     public function scopeOpen($query) {

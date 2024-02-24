@@ -28,7 +28,12 @@ class HelpPost extends Model
         });
     }
 
-    public static function getLink(?int $postId = null) {
+    public static function getLink(?int $postId = null) : string {
+
+        if(!function_exists('admin_url')) {
+            return '';
+        }
+
         $url = admin_url(static::ROUTE_PATH);
 
         if(!$postId)
@@ -44,6 +49,10 @@ class HelpPost extends Model
 
     public function getLinkAttribute() : string
     {
+        if(!function_exists('admin_url')) {
+            return '';
+        }
+
         $url = admin_url(static::ROUTE_PATH);
         return $url.'/'.$this->group->category->key.'/'.$this->group->key.'/'.$this->key;
     }

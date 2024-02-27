@@ -3,7 +3,7 @@
 namespace D4T\Core\Models;
 
 use D4T\Core\Traits\HasDomain;
-use Dcat\Admin\Enums\HttpSchemaType;
+use D4T\Core\Enums\HttpSchemaType;
 use Illuminate\Database\Eloquent\Model;
 use D4T\Core\Traits\HasDateTimeFormatter;
 

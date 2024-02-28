@@ -30,7 +30,7 @@
     "php": "^8.1",
     "illuminate/support": "^10",
     "owen-it/laravel-auditing": "dev-master",
-    "spatie/laravel-data": "^3.10",
+    "spatie/laravel-data": "^4.1",
     "spatie/laravel-database-mail-templates": "^3.5.1",
     "mikha-dev/laravel-authentication-log": "dev-main",
     "torann/geoip": "^3.0.4",
